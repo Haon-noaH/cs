@@ -1,0 +1,19 @@
+#gridcont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+.num {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  display: inline-block;
+}
