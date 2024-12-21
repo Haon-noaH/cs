@@ -41,6 +41,8 @@ blobs.forEach((p, index) => {
 
     let value = Number(p.getAttribute("value"));
 
+    let location = locate();
+
     if (
       (playercount == players && value == 0) ||
       (playercount == players && value == playercount)
@@ -49,7 +51,7 @@ blobs.forEach((p, index) => {
       p.setAttribute("value", playercount);
       p.innerHTML = count + 1;
       playercount = 1;
-      arrayAdd();
+      add();
     } else if (
       (playercount == 2 && value == 0) ||
       (playercount == 2 && value == playercount)
@@ -58,7 +60,7 @@ blobs.forEach((p, index) => {
       p.setAttribute("value", playercount);
       p.innerHTML = count + 1;
       playercount++;
-      arrayAdd();
+      add();
     } else if (
       (playercount == 3 && value == 0) ||
       (playercount == 3 && value == playercount)
@@ -67,7 +69,7 @@ blobs.forEach((p, index) => {
       p.setAttribute("value", playercount);
       p.innerHTML = count + 1;
       playercount++;
-      arrayAdd();
+      add();
     } else if (
       (playercount == 1 && value == 0) ||
       (playercount == 1 && value == playercount)
@@ -76,7 +78,9 @@ blobs.forEach((p, index) => {
       p.setAttribute("value", playercount);
       p.innerHTML = count + 1;
       playercount++;
-      arrayAdd();
+      add();
+    } else {
+      alert("This is not your blob. \n You cannot click it.");
     }
     console.log("playercount:", playercount);
     console.log("value:", value);
@@ -90,7 +94,7 @@ function index1dtoindex2d(num) {
   return String(row) + String(col);
 }
 
-function explode() {
+function locate() {
   if (indexI == 0 && indexJ == 0) {
     console.log("top left");
   } else if (indexI == 0 && indexJ == cols - 1) {
@@ -110,14 +114,16 @@ function explode() {
   } else {
     console.log("middle");
   }
-  // if (array[indexI][indexJ] == 4) {
-  //   alert("explode");
-  //   array[indexI][indexJ] = 0;
-  //   document.getElementsByTagName("p")[actIndex].innerHTML = 0;
-  //   document.getElementsByTagName("p")[actIndex].style.color = "black";
-  // }
 }
-function arrayAdd() {
+function explode() {
+  if (array[indexI][indexJ] == 4) {
+    alert("explode");
+    array[indexI][indexJ] = 0;
+    document.getElementsByTagName("p")[actIndex].innerHTML = 0;
+    document.getElementsByTagName("p")[actIndex].style.color = "black";
+  }
+}
+function add() {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
       let arrayvalue = String(i) + String(j);
@@ -129,5 +135,4 @@ function arrayAdd() {
       }
     }
   }
-  explode();
 }
