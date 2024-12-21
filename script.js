@@ -15,7 +15,6 @@ let array = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ];
-
 blobs.forEach((p, index) => {
   p.addEventListener("click", () => {
     if (document.getElementById("playercount").value > 4) {
@@ -92,12 +91,31 @@ function index1dtoindex2d(num) {
 }
 
 function explode() {
-  if (array[indexI][indexJ] == 4) {
-    alert("explode");
-    array[indexI][indexJ] = 0;
-    document.getElementsByTagName("p")[actIndex].innerHTML = 0;
-    document.getElementsByTagName("p")[actIndex].style.color = "black";
+  if (indexI == 0 && indexJ == 0) {
+    console.log("top left");
+  } else if (indexI == 0 && indexJ == cols - 1) {
+    console.log("top right");
+  } else if (indexI == rows - 1 && indexJ == 0) {
+    console.log("bottom left");
+  } else if (indexI == rows - 1 && indexJ == cols - 1) {
+    console.log("bottom right");
+  } else if (indexI == 0) {
+    console.log("top");
+  } else if (indexI == rows - 1) {
+    console.log("bottom");
+  } else if (indexJ == 0) {
+    console.log("left");
+  } else if (indexJ == cols - 1) {
+    console.log("right");
+  } else {
+    console.log("middle");
   }
+  // if (array[indexI][indexJ] == 4) {
+  //   alert("explode");
+  //   array[indexI][indexJ] = 0;
+  //   document.getElementsByTagName("p")[actIndex].innerHTML = 0;
+  //   document.getElementsByTagName("p")[actIndex].style.color = "black";
+  // }
 }
 function arrayAdd() {
   for (let i = 0; i < array.length; i++) {
