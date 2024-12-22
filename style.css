@@ -17,3 +17,9 @@
   font-weight: bold;
   display: inline-block;
 }
+.player1 {
+  color: red;
+}
+.player2 {
+  color: blue;
+}
