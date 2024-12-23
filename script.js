@@ -318,10 +318,18 @@ function playGame() {
 function backToStart() {
   document.getElementById("homePage").style.display = "flex";
   document.getElementById("aboutUs").style.display = "none";
+  document.getElementById("howToPlay").style.display = "none";
   initBoard();
 }
 
 function aboutUs(){
   document.getElementById("homePage").style.display = "none";
   document.getElementById("aboutUs").style.display = "flex";
+  document.getElementById("howToPlay").style.display = "none";
+}
+
+function howToPlay(){
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("aboutUs").style.display = "none";
+  document.getElementById("howToPlay").style.display = "flex";
 }

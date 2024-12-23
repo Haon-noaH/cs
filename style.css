@@ -83,8 +83,25 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  background-color: antiquewhite;
+  background-color: #424549;
   display: none;
-  height: 400px;
-  width: 400px;
+  height: 600px;
+  width: 600px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
+.howTo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  display: none;
+  height: 600px;
+  width: 600px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #1e2124;
+}
+
