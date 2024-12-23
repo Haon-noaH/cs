@@ -2,7 +2,7 @@
 const cells = document.querySelectorAll(".num");
 
 // Number of cells in a row/column
-let boardSize = 4;
+let boardSize = 6;
 
 // Initialize the board as a 2D array
 let board = [];
@@ -85,7 +85,7 @@ function handleCellClick(event) {
     // Switch the current player
     if (currentPlayer === 1) {
       currentPlayer = 2;
-      document.getElementById("player").style.color = "blue";
+      document.getElementById("player").style.color = "green";
       document.getElementById("player").innerHTML = currentPlayer;
     } else {
       currentPlayer = 1;
@@ -101,15 +101,17 @@ function handleCellClick(event) {
       triggerExplosion(row, col, cell.player);
     }
     updateBoard();
-    // Switch the current player
-    if (currentPlayer === 1) {
-      currentPlayer = 2;
-      document.getElementById("player").style.color = "blue";
-      document.getElementById("player").innerHTML = currentPlayer;
-    } else {
-      currentPlayer = 1;
-      document.getElementById("player").style.color = "red";
-      document.getElementById("player").innerHTML = currentPlayer;
+    if (!win) {
+      // Switch the current player
+      if (currentPlayer === 1) {
+        currentPlayer = 2;
+        document.getElementById("player").style.color = "green";
+        document.getElementById("player").innerHTML = currentPlayer;
+      } else {
+        currentPlayer = 1;
+        document.getElementById("player").style.color = "red";
+        document.getElementById("player").innerHTML = currentPlayer;
+      }
     }
   } else {
     // If the cell is not empty and not filled with the current player's blob, don't let the player do anything
@@ -129,16 +131,13 @@ function updateBoard() {
   cells.forEach((p, index) => {
     let indexI = Math.floor(index / boardSize);
     let indexJ = index % boardSize;
-    p.innerHTML = board[indexI][indexJ].count;
+    pCount = board[indexI][indexJ].count;
     if (board[indexI][indexJ].player === 1) {
-      p.classList.remove("player2");
-      p.classList.add("player1");
+      p.src = "red" + pCount + ".png";
     } else if (board[indexI][indexJ].player === 2) {
-      p.classList.remove("player1");
-      p.classList.add("player2");
+      p.src = "green" + pCount + ".png";
     } else {
-      p.classList.remove("player1");
-      p.classList.remove("player2");
+      p.src = "blank.png";
     }
   });
 }
@@ -191,6 +190,13 @@ function triggerExplosion(row, col, player) {
       clearTimeout(processExplosionsTimeout);
       explosionQueue = [];
       explosionCount = 0;
+      if (currentPlayer === 1) {
+        document.getElementById("player").style.color = "green";
+        document.getElementById("player").innerHTML = "2";
+      } else {
+        document.getElementById("player").style.color = "red";
+        document.getElementById("player").innerHTML = "1";
+      }
       initBoard();
       return;
     }
