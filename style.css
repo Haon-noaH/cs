@@ -60,7 +60,7 @@ h2 {
   border-radius: 10px;
   padding: 5px;
   width: 400px;
-  height: 700px;
+  height: 600px;
   margin-top: auto;
   z-index: 99;
 }
@@ -73,6 +73,18 @@ h2 {
 }
 
 .vsWow {
-  width: 250px;
-  height: 250px;
+  width: 225px;
+  height: 225px;
+}
+
+.about {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: antiquewhite;
+  display: none;
+  height: 400px;
+  width: 400px;
 }
