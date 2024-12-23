@@ -4,8 +4,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   row-gap: 20px;
   column-gap: 20px;
   width: fit-content;
@@ -13,10 +13,8 @@
   z-index: 1;
 }
 .num {
-  margin: 0;
-  font-size: 35px;
-  font-weight: bold;
-  display: inline-block;
+  height: 50px;
+  width: 50px;
 }
 .player1 {
   color: red;
