@@ -2,7 +2,7 @@
 const cells = document.querySelectorAll(".num");
 
 // Number of cells in a row/column
-let boardSize = 6;
+let boardSize = 4;
 
 // Initialize the board as a 2D array
 let board = [];
