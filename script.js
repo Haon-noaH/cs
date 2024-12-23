@@ -197,7 +197,7 @@ function triggerExplosion(row, col, player) {
         document.getElementById("player").style.color = "red";
         document.getElementById("player").innerHTML = "1";
       }
-      initBoard();
+      backToStart();
       return;
     }
   }
@@ -207,7 +207,7 @@ function triggerExplosion(row, col, player) {
       win = true;
       setTimeout(() => {
         alert(`Player ${currentPlayer === 1 ? 2 : 1} wins!`);
-        initBoard();
+        backToStart();
       }, 100); // Slight delay before reset
     }
   }, 1000);
@@ -312,5 +312,10 @@ function isExplosionFinished() {
 
 function playGame() {
   document.getElementById("homePage").style.display = "none";
+  initBoard();
+}
+
+function backToStart() {
+  document.getElementById("homePage").style.display = "flex";
   initBoard();
 }
