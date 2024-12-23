@@ -31,8 +31,41 @@ body{
 h1{
   text-transform: uppercase;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-shadow: 2px 2px gray;
+  text-shadow: 2px 2px black;
   text-align: center;
-  margin-top: 100px;
+  color: yellow;
+  font-size: 80px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+h2{
+  text-transform: uppercase;
+  text-align: center;
   color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.home{
+  display: block;
+  background-color: #424549;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  padding:5px;
+  width: 400px;
+  height: 700px;
+  margin-top: auto;
+}
+
+.homeButton{
+  width: 300px;
+  height: 50px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+}
+
+.vsWow{
+  width: 250px;
+  height: 250px;
 }
