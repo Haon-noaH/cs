@@ -185,7 +185,7 @@ function triggerExplosion(row, col, player) {
   // If the explosion queue has more than 5 cells, check for a win
   if (explosionQueue.length > 5) {
     if (moveCount > 1 && checkWinner() && win === false) {
-      alert(`Player ${currentPlayer} wins!`);
+      alert(`Player ${currentPlayer === 1 ? 2 : 1} wins!`);
       win = true;
       clearTimeout(explosionTimeout);
       clearTimeout(processExplosionsTimeout);
@@ -200,7 +200,7 @@ function triggerExplosion(row, col, player) {
     if (moveCount > 1 && checkWinner() && isExplosionFinished() && !win) {
       win = true;
       setTimeout(() => {
-        alert(`Player ${currentPlayer} wins!`);
+        alert(`Player ${currentPlayer === 1 ? 2 : 1} wins!`);
         initBoard();
       }, 100); // Slight delay before reset
     }
@@ -304,4 +304,7 @@ function isExplosionFinished() {
   return explosionQueue.length === 0;
 }
 
-initBoard();
+function playGame() {
+  document.getElementById("homePage").style.display = "none";
+  initBoard();
+}
