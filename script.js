@@ -8,6 +8,8 @@ let board = [];
 let currentPlayer = 1;
 let moveCount = 0;
 let win = false;
+let rwinCount = 0;
+let gwinCount = 0;
 
 // mga timeout id
 let explosionTimeout;
@@ -203,6 +205,15 @@ function triggerExplosion(row, col, player) {
       win = true;
       setTimeout(() => {
         alert(`Player ${currentPlayer === 1 ? 2 : 1} wins!`);
+        if (currentPlayer === 2){
+          rwinCount += 1;
+          document.getElementById("rwins").innerHTML="red wins: " + rwinCount;
+        }
+
+        else if (currentPlayer === 1){
+          gwinCount += 1;
+          document.getElementById("gwins").innerHTML="green wins: " + gwinCount;
+        }
         backToStart();
       }, 100);
     }
@@ -219,7 +230,7 @@ function processExplosions(curPlayer) {
     return;
   }
 
-  explosion = true;
+  explosion = true; 
 
   // kunin yung cell na dapat pasabugin
   const [row, col, player] = explosionQueue.shift();
