@@ -197,10 +197,10 @@ function triggerExplosion(row, col, player) {
       explosionQueue = [];
       explosionCount = 0;
       if (currentPlayer === 1) {
-        document.getElementById("player").style.color = "green";
+        document.getElementById("player").style.color = "light green";
         document.getElementById("player").innerHTML = "Player: 2";
       } else {
-        document.getElementById("player").style.color = "red";
+        document.getElementById("player").style.color = "light red";
         document.getElementById("player").innerHTML = "Player: 1";
       }
       backToStart();
@@ -334,7 +334,7 @@ function aboutUs() {
   document.getElementById("howToPlay").style.display = "none";
 }
 
-function howToPlay(){
+function howToPlay() {
   document.getElementById("homePage").style.display = "none";
   document.getElementById("aboutUs").style.display = "none";
   document.getElementById("howToPlay").style.display = "flex";
