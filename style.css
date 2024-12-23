@@ -23,3 +23,16 @@
 .player2 {
   color: blue;
 }
+
+body{
+  background-color: 	#1e2124;
+}
+
+h1{
+  text-transform: uppercase;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 2px 2px gray;
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+}
