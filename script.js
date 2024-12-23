@@ -7,6 +7,7 @@ let win = false;
 let explosionTimeout;
 let processExplosionsTimeout;
 let timeoutIds = []; // Array to store all timeout IDs
+let explosion = false;
 
 function initBoard() {
   // Clear all pending timeouts
@@ -40,6 +41,10 @@ cells.forEach((p, index) => {
 });
 
 function handleCellClick(event) {
+  if (explosion) {
+    alert("Explosion in progress!");
+    return;
+  }
   if (win) return; // Prevent moves after win condition
 
   const row = parseInt(event.target.dataset.row);
@@ -66,6 +71,15 @@ function handleCellClick(event) {
 }
 
 function updateBoard() {
+  if (moveCount < 1) {
+    document.getElementById("player").style.color = "red";
+  } else if (currentPlayer === 1) {
+    document.getElementById("player").style.color = "blue";
+    document.getElementById("player").innerHTML = "2";
+  } else {
+    document.getElementById("player").style.color = "red";
+    document.getElementById("player").innerHTML = "1";
+  }
   cells.forEach((p, index) => {
     let indexI = Math.floor(index / boardSize);
     let indexJ = index % boardSize;
@@ -137,8 +151,11 @@ function triggerExplosion(row, col, player) {
 
 function processExplosions(curPlayer) {
   if (win || explosionQueue.length === 0 || explosionCount >= 2) {
+    explosion = false;
     return;
   }
+
+  explosion = true;
 
   const [row, col, player] = explosionQueue.shift();
   explosionCount++;
@@ -166,16 +183,19 @@ function processExplosions(curPlayer) {
       const neighbor = board[newRow][newCol];
       neighbor.player = curPlayer;
       if (neighbor.count === getExplosionThreshold(newRow, newCol)) {
-        neighbor.count = getExplosionThreshold(newRow, newCol);
-      } else {
-        neighbor.count += 1;
-      }
-
-      if (neighbor.count >= getExplosionThreshold(newRow, newCol)) {
+        neighbor.count = getExplosionThreshold(newRow, newCol) - 1; // pwede -1 or hindi depende nalang sayo pag -1 mas mahaba laro
         const newExplosionTimeout = setTimeout(() => {
           triggerExplosion(newRow, newCol, curPlayer);
         }, 400);
         timeoutIds.push(newExplosionTimeout);
+      } else {
+        neighbor.count += 1;
+        if (neighbor.count >= getExplosionThreshold(newRow, newCol)) {
+          const newExplosionTimeout = setTimeout(() => {
+            triggerExplosion(newRow, newCol, curPlayer);
+          }, 400);
+          timeoutIds.push(newExplosionTimeout);
+        }
       }
     }
   });
