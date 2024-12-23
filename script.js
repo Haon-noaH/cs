@@ -86,11 +86,11 @@ function handleCellClick(event) {
     if (currentPlayer === 1) {
       currentPlayer = 2;
       document.getElementById("player").style.color = "green";
-      document.getElementById("player").innerHTML = currentPlayer;
+      document.getElementById("player").innerHTML = "Player: " + currentPlayer;
     } else {
       currentPlayer = 1;
       document.getElementById("player").style.color = "red";
-      document.getElementById("player").innerHTML = currentPlayer;
+      document.getElementById("player").innerHTML = "Player: " + currentPlayer;
     }
   } else if (cell.player === currentPlayer) {
     // If the cell is already filled with the current player's blob, increase the count
@@ -106,11 +106,13 @@ function handleCellClick(event) {
       if (currentPlayer === 1) {
         currentPlayer = 2;
         document.getElementById("player").style.color = "green";
-        document.getElementById("player").innerHTML = currentPlayer;
+        document.getElementById("player").innerHTML =
+          "Player: " + currentPlayer;
       } else {
         currentPlayer = 1;
         document.getElementById("player").style.color = "red";
-        document.getElementById("player").innerHTML = currentPlayer;
+        document.getElementById("player").innerHTML =
+          "Player: " + currentPlayer;
       }
     }
   } else {
@@ -124,7 +126,7 @@ function updateBoard() {
   // If no moves have been made, set the current player to 1
   if (moveCount < 1) {
     document.getElementById("player").style.color = "red";
-    document.getElementById("player").innerHTML = "1";
+    document.getElementById("player").innerHTML = "Player: 1";
   }
 
   // Update all the number elements
@@ -177,8 +179,12 @@ function triggerExplosion(row, col, player) {
   if (win) return;
   if (win) return; // Prevent new explosions after win
 
-  // Add the cell to the explosion queue
-  explosionQueue.push([row, col, player]);
+  // Add the cell to the explosion queue if it's not already in the queue
+  const isDuplicate = explosionQueue.some(([r, c]) => r === row && c === col);
+  if (!isDuplicate) {
+    explosionQueue.push([row, col, player]);
+  }
+
   processExplosions(player);
 
   // If the explosion queue has more than 5 cells, check for a win
@@ -192,10 +198,10 @@ function triggerExplosion(row, col, player) {
       explosionCount = 0;
       if (currentPlayer === 1) {
         document.getElementById("player").style.color = "green";
-        document.getElementById("player").innerHTML = "2";
+        document.getElementById("player").innerHTML = "Player: 2";
       } else {
         document.getElementById("player").style.color = "red";
-        document.getElementById("player").innerHTML = "1";
+        document.getElementById("player").innerHTML = "Player: 1";
       }
       backToStart();
       return;
@@ -322,7 +328,7 @@ function backToStart() {
   initBoard();
 }
 
-function aboutUs(){
+function aboutUs() {
   document.getElementById("homePage").style.display = "none";
   document.getElementById("aboutUs").style.display = "flex";
   document.getElementById("howToPlay").style.display = "none";
