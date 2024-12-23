@@ -335,3 +335,15 @@ function howToPlay() {
   document.getElementById("aboutUs").style.display = "none";
   document.getElementById("howToPlay").style.display = "flex";
 }
+
+let array = ["#20eb89", "#ff6060"];
+function mouseOver(i) {
+  let color = array[Math.floor(Math.random() * 2)];
+  document.getElementsByClassName("homeButton")[i].style.backgroundColor =
+    color;
+}
+
+function mouseOut(i) {
+  document.getElementsByClassName("homeButton")[i].style.backgroundColor =
+    "white";
+}

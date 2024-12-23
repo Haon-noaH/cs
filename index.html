@@ -13,13 +13,31 @@
         <h1>FIZZION</h1>
         <h2>A fun 2 player strategy game!</h2>
         <br />
-        <button type="button" onclick="playGame()" class="homeButton">
+        <button
+          type="button"
+          onclick="playGame()"
+          onmouseover="mouseOver(0)"
+          onmouseout="mouseOut(0)"
+          class="homeButton"
+        >
           PLAY</button
         ><br />
-        <button type="button" onclick="howToPlay()" class="homeButton">
+        <button
+          type="button"
+          onclick="howToPlay()"
+          onmouseover="mouseOver(1)"
+          onmouseout="mouseOut(1)"
+          class="homeButton"
+        >
           HOW TO PLAY</button
         ><br />
-        <button type="button" onclick="aboutUs()" class="homeButton">
+        <button
+          type="button"
+          onclick="aboutUs()"
+          onmouseover="mouseOver(2)"
+          onmouseout="mouseOut(2)"
+          class="homeButton"
+        >
           ABOUT US
         </button>
       </div>
@@ -69,14 +87,21 @@
     </div>
 
     <div id="aboutUs" class="about">
-      <img src="aboutus.png">
-      <span><button type="button" class="back" onclick="backToStart()">BACK</button></span>
-
+      <img src="aboutus.png" />
+      <span
+        ><button type="button" class="back" onclick="backToStart()">
+          BACK
+        </button></span
+      >
     </div>
 
     <div id="howToPlay" class="howTo">
-      <img src="howtoplay.png">
-      <span><button type="button" class="back" onclick="backToStart()">BACK</button></span>
+      <img src="howtoplay.png" />
+      <span
+        ><button type="button" class="back" onclick="backToStart()">
+          BACK
+        </button></span
+      >
     </div>
 
     <script src="script.js"></script>
