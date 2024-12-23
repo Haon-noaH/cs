@@ -37,6 +37,7 @@ function initBoard() {
   // reset lahat ng variable na nagbago
   explosionQueue = [];
   explosionCount = 0;
+  explosion = false;
   win = false;
   moveCount = 0;
   currentPlayer = 1;
